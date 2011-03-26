@@ -1,0 +1,4 @@
+logs:
+    /tmp/test.log:
+        level: LOG_CRIT
+        type: local2
