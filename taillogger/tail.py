@@ -44,7 +44,8 @@ class TailThread(threading.Thread):
                     #
                     # send to syslog
                     #
-                    syslog.syslog(syslog.LOG_LOCAL2, line)
+                    for l in line:
+                        syslog.syslog(syslog.LOG_LOCAL2, l)
                 
                 if self.done:
                     break
