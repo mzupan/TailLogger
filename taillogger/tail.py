@@ -24,9 +24,13 @@ class TailThread(threading.Thread):
             self.dorun = False
         
     def _reset(self):
-        self.f.close()
-        self.f = open(self.log, "r")
-        self.pos = self.f.tell()
+        try:
+            self.f.close()
+            self.f = open(self.log, "r")
+            self.pos = self.f.tell()
+        except:
+            time.sleep(5)
+            self._reset()
     
     def run(self):
         if self.dorun:
